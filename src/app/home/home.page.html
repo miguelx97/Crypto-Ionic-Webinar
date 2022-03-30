@@ -1,20 +1,22 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Cryptos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-list class="crypto-list">
+    <ion-item *ngFor="let crypto of cryptos">
+      <ion-thumbnail slot="start" class="icon" (click)="shareCoin(crypto)">
+        <ion-img [src]="crypto.image"></ion-img>
+      </ion-thumbnail>
+      <div class="row">
+        <ion-label class="left-data">
+          <h2 (click)="moreInfo(crypto.id)">{{crypto.name}}</h2>
+          <p>{{roundedNumber(crypto.current_price)}} €</p>
+        </ion-label>
+        <ion-label [color]="(crypto.price_change_24h>0)?'success':'danger'">{{ roundedNumber(crypto.price_change_24h) }} €</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
