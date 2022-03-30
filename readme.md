@@ -39,6 +39,10 @@ Producción:
 
 ```bash
 ionic build --prod
+npm install -D @capacitor/android #solo la primera vez
+npx cap add android #solo la primera vez
+npx cap copy android
+npx cap open android
 ```
 
 
